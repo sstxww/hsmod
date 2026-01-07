@@ -1,0 +1,5 @@
+/workspaces/hsmod/bin/Release/net8.0/publish/ConfigPreprocessor
+/workspaces/hsmod/bin/Release/net8.0/publish/ConfigPreprocessor.dll
+/workspaces/hsmod/bin/Release/net8.0/publish/ConfigPreprocessor.deps.json
+/workspaces/hsmod/bin/Release/net8.0/publish/ConfigPreprocessor.runtimeconfig.json
+/workspaces/hsmod/bin/Release/net8.0/publish/ConfigPreprocessor.pdb

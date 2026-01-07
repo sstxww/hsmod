@@ -1,0 +1,15 @@
+/workspaces/hsmod/bin/Release/net8.0/ConfigPreprocessor
+/workspaces/hsmod/bin/Release/net8.0/ConfigPreprocessor.deps.json
+/workspaces/hsmod/bin/Release/net8.0/ConfigPreprocessor.runtimeconfig.json
+/workspaces/hsmod/bin/Release/net8.0/ConfigPreprocessor.dll
+/workspaces/hsmod/bin/Release/net8.0/ConfigPreprocessor.pdb
+/workspaces/hsmod/obj/Release/net8.0/ConfigPreprocessor.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/hsmod/obj/Release/net8.0/ConfigPreprocessor.AssemblyInfoInputs.cache
+/workspaces/hsmod/obj/Release/net8.0/ConfigPreprocessor.AssemblyInfo.cs
+/workspaces/hsmod/obj/Release/net8.0/ConfigPreprocessor.csproj.CoreCompileInputs.cache
+/workspaces/hsmod/obj/Release/net8.0/ConfigPreprocessor.sourcelink.json
+/workspaces/hsmod/obj/Release/net8.0/ConfigPreprocessor.dll
+/workspaces/hsmod/obj/Release/net8.0/refint/ConfigPreprocessor.dll
+/workspaces/hsmod/obj/Release/net8.0/ConfigPreprocessor.pdb
+/workspaces/hsmod/obj/Release/net8.0/ConfigPreprocessor.genruntimeconfig.cache
+/workspaces/hsmod/obj/Release/net8.0/ref/ConfigPreprocessor.dll
