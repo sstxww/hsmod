@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
@@ -9,8 +10,12 @@ namespace ConfigPreprocessor
     {
         static void Main(string[] args)
         {
-            // 配置文件路径
-            string configFilePath = @"D:\OW\Hearthstone\BepInEx\config\HsMod.cfg";
+            string configFilePath = ResolveConfigPath(args);
+            if (string.IsNullOrWhiteSpace(configFilePath))
+            {
+                Console.WriteLine("错误：未能自动找到 HsMod.cfg，请在命令行传入配置文件路径。");
+                return;
+            }
 
             // 设置端口范围
             int minPort = 58744;
@@ -77,6 +82,70 @@ namespace ConfigPreprocessor
             {
                 return false;
             }
+        }
+
+        static string ResolveConfigPath(string[] args)
+        {
+            if (args != null && args.Length > 0 && !string.IsNullOrWhiteSpace(args[0]))
+            {
+                return args[0];
+            }
+
+            string baseDirectory = AppContext.BaseDirectory;
+            foreach (string path in EnumerateCandidatePaths(baseDirectory))
+            {
+                if (File.Exists(path))
+                {
+                    return path;
+                }
+            }
+
+            string current = Directory.GetCurrentDirectory();
+            foreach (string path in EnumerateCandidatePaths(current))
+            {
+                if (File.Exists(path))
+                {
+                    return path;
+                }
+            }
+
+            return FindConfigFileInParents(baseDirectory, maxLevels: 4);
+        }
+
+        static IEnumerable<string> EnumerateCandidatePaths(string baseDirectory)
+        {
+            yield return Path.Combine(baseDirectory, "HsMod.cfg");
+            yield return Path.Combine(baseDirectory, "BepInEx", "config", "HsMod.cfg");
+        }
+
+        static string FindConfigFileInParents(string startDirectory, int maxLevels)
+        {
+            if (string.IsNullOrWhiteSpace(startDirectory))
+            {
+                return null;
+            }
+
+            string current = Path.GetFullPath(startDirectory);
+            for (int level = 0; level <= maxLevels && !string.IsNullOrEmpty(current); level++)
+            {
+                foreach (string path in EnumerateCandidatePaths(current))
+                {
+                    if (File.Exists(path))
+                    {
+                        return path;
+                    }
+                }
+
+                DirectoryInfo parent = Directory.GetParent(current);
+                if (parent == null)
+                {
+                    break;
+                }
+
+                current = parent.FullName;
+            }
+
+            return null;
         }
     }
 }
